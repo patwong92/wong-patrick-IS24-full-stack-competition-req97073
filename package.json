@@ -1,0 +1,23 @@
+{
+    "name": "wong-patrick-is24-full-stack-competition-req97073",
+    "version": "1.0.0",
+    "description": "IMB web application catalogue",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "concurrently \"cd api && npm run start:dev\" \"cd app && npm run start\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/patwong92/wong-patrick-IS24-full-stack-competition-req97073.git"
+    },
+    "author": "Patrick Wong",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/patwong92/wong-patrick-IS24-full-stack-competition-req97073/issues"
+    },
+    "homepage": "https://github.com/patwong92/wong-patrick-IS24-full-stack-competition-req97073#readme",
+    "dependencies": {
+        "concurrently": "^7.6.0"
+    }
+}
