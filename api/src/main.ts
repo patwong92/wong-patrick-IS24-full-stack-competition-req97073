@@ -6,6 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix('api');
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Products API')
     .setDescription('API that records projects developed or maintained by IMB')

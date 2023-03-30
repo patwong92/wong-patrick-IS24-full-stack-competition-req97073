@@ -1,0 +1,76 @@
+<div class="product-list">
+  <app-search></app-search>
+  <div class="table-header-container">
+    <div>
+      <a routerLink="add-product">
+        <button mat-flat-button color="primary">ADD PRODUCT</button></a
+      >
+    </div>
+
+    <div>
+      <mat-paginator
+        #paginator
+        [pageSize]="10"
+        [pageSizeOptions]="[10, 25, 50]"
+        showFirstLastButtons
+        aria-label="Select page of products"
+      ></mat-paginator>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef>Product Id</th>
+      <td mat-cell *matCellDef="let product">{{ product.productId }}</td>
+    </ng-container>
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef>Product Name</th>
+      <td mat-cell *matCellDef="let product">{{ product.productName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="productOwnerName">
+      <th mat-header-cell *matHeaderCellDef>Product Owner's Name</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.productOwnerName }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="developers">
+      <th mat-header-cell *matHeaderCellDef>Developers</th>
+      <td mat-cell *matCellDef="let product">
+        <div *ngFor="let developer of product.developers">
+          <div>{{ developer }}</div>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="scrumMasterName">
+      <th mat-header-cell *matHeaderCellDef>Scrum Master Name</th>
+      <td mat-cell *matCellDef="let product">{{ product.scrumMasterName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let product">{{ product.startDate }}</td>
+    </ng-container>
+    <ng-container matColumnDef="methodology">
+      <th mat-header-cell *matHeaderCellDef>Methodology</th>
+      <td mat-cell *matCellDef="let product">{{ product.methodology }}</td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let product">
+        <button
+          class="edit-product"
+          mat-mini-fab
+          color="primary"
+          (click)="navigate(product.productId)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      class="table-row"
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+</div>

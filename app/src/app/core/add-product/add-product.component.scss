@@ -1,0 +1,64 @@
+mat-card {
+  width: 600px;
+}
+
+.button__icon {
+  height: 24px;
+  width: 24px;
+  transform: translate(-4px, -4px);
+
+  mat-icon {
+    height: 16px !important;
+    font-size: 16px !important;
+    width: 16px !important;
+  }
+}
+
+form {
+  margin: 24px 12px;
+  padding: 12px;
+
+  label {
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    width: 200px;
+    margin-bottom: 8px;
+  }
+}
+
+.form-field {
+  margin-bottom: 12px;
+  width: 100%;
+
+  & input {
+    width: calc(100% - 8px);
+  }
+}
+
+.name-form-field {
+  display: flex;
+  gap: 24px;
+
+  input {
+    width: 50%;
+  }
+}
+
+.container__developer-label {
+  label {
+    width: 110px;
+  }
+
+  button {
+    transform: translateY(2px);
+  }
+}
+
+.container__developer-input {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}

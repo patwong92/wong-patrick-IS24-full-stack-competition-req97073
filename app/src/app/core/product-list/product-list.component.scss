@@ -1,0 +1,33 @@
+.mat-elevation-z8 {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+table td {
+  width: 100px;
+  word-wrap: break-word;
+}
+
+.table-row {
+  height: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-header-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.button__edit-product {
+  width: 42px;
+}

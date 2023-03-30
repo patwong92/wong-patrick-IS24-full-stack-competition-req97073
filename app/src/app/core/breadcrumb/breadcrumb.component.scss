@@ -1,0 +1,14 @@
+.breadcrumb {
+  font-size: 20px;
+  margin-bottom: 16px;
+
+  a:hover {
+    color: gray;
+  }
+
+  span {
+    display: inline-block;
+    margin: 0 16px;
+    transform: translateY(4px);
+  }
+}

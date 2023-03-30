@@ -1,9 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateProductDTO {
-  @ApiProperty({ type: String, description: 'This is a required property' })
-  productId: string;
-
   @ApiPropertyOptional({
     type: String,
     description: 'This is a required property',
@@ -14,7 +11,7 @@ export class UpdateProductDTO {
     type: String,
     description: 'This is a required property',
   })
-  productOwnersName?: string;
+  productOwnerName?: string;
 
   @ApiPropertyOptional({
     type: Array<String>,

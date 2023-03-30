@@ -1,0 +1,36 @@
+<section class="container__search-options">
+  <form class="search-form" [formGroup]="searchControl">
+    <span>Search by</span>
+    <mat-radio-group aria-label="Select an option" formControlName="option">
+      <mat-radio-button value="all">All</mat-radio-button>
+      <mat-radio-button value="developer">Developer</mat-radio-button>
+      <mat-radio-button value="scrumMaster">Scrum Master</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field
+      [style.visibility]="
+        searchControl.controls['option'].value === 'all' ? 'hidden' : 'visible'
+      "
+      class="search-bar"
+      appearance="fill"
+    >
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        placeholder="Pick one"
+        aria-label="name"
+        matInput
+        formControlName="query"
+        placeholder="Search"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of displayedOptions$ | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</section>

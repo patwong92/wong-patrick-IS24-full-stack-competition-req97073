@@ -11,7 +11,7 @@ export class InsertProductDTO {
     type: String,
     description: 'This is a required property',
   })
-  productOwnersName: string;
+  productOwnerName: string;
 
   @ApiProperty({
     type: Array<String>,

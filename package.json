@@ -1,7 +1,7 @@
 {
     "name": "wong-patrick-is24-full-stack-competition-req97073",
     "version": "1.0.0",
-    "description": "IMB web application catalogue",
+    "description": "IMB web application catalog",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

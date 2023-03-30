@@ -4,11 +4,12 @@ import { InsertProductDTO } from './dtos/insertProduct.dto';
 import { Product } from './dtos/product.entity';
 import { UpdateProductDTO } from './dtos/updateProduct.dto';
 import * as fs from 'fs';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable()
 export class ProductsService {
   private writeToFile(products: Product[]): void {
-    const url = '../products.json';
+    const url = 'products.json';
     fs.writeFileSync(url, JSON.stringify(products, null, 2), 'utf8');
   }
 
@@ -18,7 +19,7 @@ export class ProductsService {
       this.writeToFile(PRODUCTS);
     } catch (e) {
       console.log('An error has occured', e);
-      return false;
+      throw Error(e);
     }
 
     return true;
@@ -30,26 +31,45 @@ export class ProductsService {
 
   insertProduct(dto: InsertProductDTO): boolean {
     try {
-      PRODUCTS.push(dto as Product);
+      let generatedProductId;
+      const productIds: string[] = PRODUCTS.map((product) => product.productId);
+
+      while (1) {
+        generatedProductId = CryptoJS.SHA256(new Date().toISOString())
+          .toString(CryptoJS.enc.Hex)
+          .slice(0, 8)
+          .toString();
+
+        if (!productIds.find((id) => id === generatedProductId)) break;
+      }
+      const product = {
+        productId: generatedProductId,
+        ...dto,
+      };
+
+      PRODUCTS.push(product);
       this.writeToFile(PRODUCTS);
     } catch (e) {
       console.log('An error has occurred', e);
-      return false;
+      throw Error(e);
     }
 
     return true;
   }
 
-  updateProduct(dto: UpdateProductDTO): boolean {
+  updateProduct(productId: string, dto: UpdateProductDTO): boolean {
     try {
       const index = PRODUCTS.findIndex(
-        (product) => product.productId === dto.productId,
+        (product) => product?.productId === productId,
       );
+
+      if (index < 0) throw Error('Invalid productId');
+
       PRODUCTS[index] = { ...PRODUCTS[index], ...dto };
       this.writeToFile(PRODUCTS);
     } catch (e) {
       console.log('An error has occured', e);
-      return false;
+      throw e;
     }
 
     return true;

@@ -1,0 +1,121 @@
+<app-breadcrumb currentPath="Add Product"></app-breadcrumb>
+
+<mat-card>
+  <form [formGroup]="productForm">
+    <div class="form-field">
+      <label for="product-name">PRODUCT</label
+      ><input id="product-name" type="text" formControlName="productName" />
+    </div>
+
+    <div class="form-field" formGroupName="scrumMasterName">
+      <label for="scrum-master-name">SCRUM MASTER</label>
+      <div class="name-form-field">
+        <input
+          id="scrum-master-first-name"
+          type="text"
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+        <input
+          id="scrum-master-last-name"
+          type="text"
+          formControlName="lastName"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+
+    <div class="form-field" formGroupName="productOwnerName">
+      <label for="product-owner-name">PRODUCT OWNER</label>
+      <div class="name-form-field">
+        <input
+          id="product-owner-first-name"
+          type="text"
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+        <input
+          id="product-owner-last-name"
+          type="text"
+          formControlName="lastName"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="container__developer-label">
+        <label for="developers">DEVELOPERS</label>
+        <button
+          mat-fab
+          class="button__icon"
+          color="primary"
+          aria-label="Add developer button"
+          (click)="addDeveloperFormControl()"
+          [disabled]="developersArray.value.length >= 5"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <ng-container
+        *ngFor="let developer of developersArray.controls; index as i"
+        formArrayName="developers"
+      >
+        <div
+          id="{{ i }}"
+          class="container__developer-input"
+          [formGroupName]="i"
+        >
+          <input
+            type="text"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+          <input
+            type="text"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+
+          <button
+            class="button__icon"
+            mat-fab
+            color="accent"
+            aria-label="Delete developer button"
+            (click)="removeDeveloperFormControl(i)"
+            [ngStyle]="{ visibility: i ? 'visible' : 'hidden' }"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <label for="start-date">START DATE</label
+      ><input
+        id="start-date"
+        type="text"
+        formControlName="startDate"
+        placeholder="YYYY/MM/DD"
+      />
+    </div>
+
+    <div class="form-field">
+      <label for="methodology">METHODOLOGY</label>
+      <select id="methodology" name="methodology" formControlName="methodology">
+        <option value="AGILE">Agile</option>
+        <option value="WATERFALL">Waterfall</option>
+      </select>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="!productForm.valid"
+    >
+      SAVE
+    </button>
+  </form>
+</mat-card>
