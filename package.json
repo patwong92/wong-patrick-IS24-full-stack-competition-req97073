@@ -1,11 +1,11 @@
 {
     "name": "wong-patrick-is24-full-stack-competition-req97073",
     "version": "1.0.0",
-    "description": "IMB web application catalog",
+    "description": "IMB Product Catalog",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "concurrently \"cd api && npm run start:dev\" \"cd app && npm run start\""
+        "start": "concurrently \"cd api && npm run start:dev\" \"cd client && npm run start\""
     },
     "repository": {
         "type": "git",

@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+    client:
+        image: imb-product-catalog-client:1.0.0
+        build: client
+        ports:
+            - 4200:80
+
+    api:
+        image: imb-product-catalog-api:1.0.0
+        build: api
+        ports:
+            - 3000:3000
