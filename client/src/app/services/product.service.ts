@@ -12,7 +12,7 @@ export class ProductService {
   currentProductSubject: BehaviorSubject<Product | null>;
 
   constructor(private http: HttpClient) {
-    this.productsSubject = new BehaviorSubject<any>([]);
+    this.productsSubject = new BehaviorSubject<Product[]>([]);
     this.currentProductSubject = new BehaviorSubject<Product | null>(null);
     this.getProducts();
   }
@@ -48,15 +48,15 @@ export class ProductService {
     return this.currentProductSubject.value?.productName as string;
   }
 
-  addProduct$(body: any): Observable<boolean> {
-    return this.http.post<boolean>(
+  addProduct$(body: any): Observable<{ productId: string }> {
+    return this.http.post<{ productId: string }>(
       `${environment.baseApiUrl}/api/products`,
       body
     );
   }
 
-  updateProduct$(id: string, body: any): Observable<boolean> {
-    return this.http.put<boolean>(
+  updateProduct$(id: string, body: any): Observable<Product> {
+    return this.http.put<Product>(
       `${environment.baseApiUrl}/api/products/${id}`,
       body
     );

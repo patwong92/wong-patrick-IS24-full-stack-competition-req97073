@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import * as PRODUCTS from '../../products.json';
 import { InsertProductDTO } from './dtos/insertProduct.dto';
 import { Product } from './dtos/product.entity';
@@ -29,49 +33,58 @@ export class ProductsService {
     return PRODUCTS;
   }
 
-  insertProduct(dto: InsertProductDTO): boolean {
+  insertProduct(dto: InsertProductDTO) {
+    let productId;
+    const productIds: string[] = PRODUCTS.map((product) => product.productId);
+
+    // While loop prevents productId insertion collisons
+    while (1) {
+      // Obtain random 8 digit hexadecimal string
+      productId = CryptoJS.SHA256(new Date().toISOString())
+        .toString(CryptoJS.enc.Hex)
+        .slice(0, 8)
+        .toString();
+
+      if (!productIds.find((id) => id === productId)) break;
+    }
+    const product = {
+      productId: productId,
+      ...dto,
+    };
+
     try {
-      let generatedProductId;
-      const productIds: string[] = PRODUCTS.map((product) => product.productId);
-
-      while (1) {
-        generatedProductId = CryptoJS.SHA256(new Date().toISOString())
-          .toString(CryptoJS.enc.Hex)
-          .slice(0, 8)
-          .toString();
-
-        if (!productIds.find((id) => id === generatedProductId)) break;
-      }
-      const product = {
-        productId: generatedProductId,
-        ...dto,
-      };
-
       PRODUCTS.push(product);
       this.writeToFile(PRODUCTS);
     } catch (e) {
       console.log('An error has occurred', e);
-      throw Error(e);
+      throw new InternalServerErrorException(
+        'Unable to insert product to catalog',
+      );
     }
 
-    return true;
+    return { productId };
   }
 
-  updateProduct(productId: string, dto: UpdateProductDTO): boolean {
+  updateProduct(productId: string, dto: UpdateProductDTO) {
+    let updatedProduct;
+
     try {
       const index = PRODUCTS.findIndex(
         (product) => product?.productId === productId,
       );
 
-      if (index < 0) throw Error('Invalid productId');
+      if (index === -1) throw new BadRequestException('Invalid productId');
 
-      PRODUCTS[index] = { ...PRODUCTS[index], ...dto };
+      updatedProduct = { ...PRODUCTS[index], ...dto };
+      PRODUCTS[index] = updatedProduct;
       this.writeToFile(PRODUCTS);
     } catch (e) {
-      console.log('An error has occured', e);
-      throw e;
+      console.log('An error has occurred', e);
+      throw new InternalServerErrorException(
+        'Unable to update product to catalog',
+      );
     }
 
-    return true;
+    return updatedProduct;
   }
 }

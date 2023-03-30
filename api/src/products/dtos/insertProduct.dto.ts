@@ -1,39 +1,43 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsString, Matches } from 'class-validator';
 
 export class InsertProductDTO {
   @ApiProperty({
-    type: String,
-    description: 'This is a required property',
+    description: 'The name of the product',
   })
+  @IsString()
   productName: string;
 
   @ApiProperty({
-    type: String,
-    description: 'This is a required property',
+    description: 'The name of the product owner',
   })
+  @IsString()
   productOwnerName: string;
 
   @ApiProperty({
-    type: Array<String>,
-    description: 'This is a required property',
+    isArray: true,
+    type: String,
+    description: 'The name of the developer',
   })
+  @IsString({ each: true })
   developers: string[];
 
   @ApiProperty({
-    type: String,
-    description: 'This is a required property',
+    description: 'The name of the scrum master',
   })
+  @IsString()
   scrumMasterName: string;
 
   @ApiProperty({
-    type: String,
-    description: 'This is a required property',
+    description: 'The start date of the project in YYYY/MM/DD format',
   })
+  @IsString()
   startDate: string;
 
   @ApiProperty({
-    type: String,
-    description: 'This is a required property',
+    description: 'The methodology of the project',
+    enum: ['AGILE', 'WATERFALL'],
   })
-  methodology: string;
+  @Matches(RegExp(/^.*\b(AGILE|WATERFALL)\b.*$/))
+  methodology: 'AGILE' | 'WATERFALL';
 }

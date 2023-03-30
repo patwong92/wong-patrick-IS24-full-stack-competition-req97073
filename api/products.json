@@ -1,11 +1,11 @@
 [
   {
     "productId": "874868fc",
-    "productName": "Apple Product",
-    "scrumMasterName": "Tim Apples",
+    "productName": "Apple Product X",
+    "scrumMasterName": "Tim Apple",
     "productOwnerName": "JJ Bean",
     "developers": [
-      "Linus Techtips"
+      "Dairy Queen"
     ],
     "startDate": "2023/11/11",
     "methodology": "WATERFALL"
@@ -14,9 +14,9 @@
     "productId": "6b6be39c",
     "productName": "Project Lancelot",
     "scrumMasterName": "Timothy Apple",
-    "productOwnerName": "Barack Obama",
+    "productOwnerName": "John Smith",
     "developers": [
-      "TT Tires",
+      "Tom Brady",
       "KK Slider"
     ],
     "startDate": "2022/03/22",
@@ -29,7 +29,7 @@
     "productOwnerName": "Ronald Mcdonald",
     "developers": [
       "Colonel Sanders",
-      "Linus Techtips"
+      "Dairy Queen"
     ],
     "startDate": "2022/11/11",
     "methodology": "AGILE"
@@ -48,7 +48,7 @@
   },
   {
     "productId": "85e6d8d4",
-    "productName": "BC Poverty Reduction Survey",
+    "productName": "BC Poverty Reduction Project",
     "scrumMasterName": "Mike Mcmillian",
     "productOwnerName": "Tom Gray",
     "developers": [
@@ -70,7 +70,7 @@
   },
   {
     "productId": "3329a120",
-    "productName": "Banana Product",
+    "productName": "Public Project A",
     "scrumMasterName": "Ash Ketchup",
     "productOwnerName": "Brock Misty",
     "developers": [
@@ -82,8 +82,8 @@
   {
     "productId": "349e79f9",
     "productName": "LiftBuddy",
-    "scrumMasterName": "Fiona Wong",
-    "productOwnerName": "Apple Wong",
+    "scrumMasterName": "Michael Moore",
+    "productOwnerName": "Blanca Otis",
     "developers": [
       "Charlie Brown",
       "Snoopy The-Dog"

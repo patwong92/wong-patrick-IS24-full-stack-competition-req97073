@@ -1,39 +1,48 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsOptional, IsString, Matches } from 'class-validator';
 
 export class UpdateProductDTO {
   @ApiPropertyOptional({
-    type: String,
-    description: 'This is a required property',
+    description: 'The name of the product',
   })
+  @IsString()
+  @IsOptional()
   productName?: string;
 
   @ApiPropertyOptional({
-    type: String,
-    description: 'This is a required property',
+    description: 'The name of the product owner',
   })
+  @IsString()
+  @IsOptional()
   productOwnerName?: string;
 
   @ApiPropertyOptional({
-    type: Array<String>,
-    description: 'This is a required property',
+    isArray: true,
+    type: String,
+    description: 'The name of the developer',
   })
+  @IsString({ each: true })
+  @IsOptional()
   developers?: string[];
 
   @ApiPropertyOptional({
-    type: String,
-    description: 'This is a required property',
+    description: 'The name of the scrum master',
   })
+  @IsString()
+  @IsOptional()
   scrumMasterName?: string;
 
   @ApiPropertyOptional({
-    type: String,
-    description: 'This is a required property',
+    description: 'The start date of the project in YYYY/MM/DD format',
   })
+  @IsString()
+  @IsOptional()
   startDate?: string;
 
   @ApiPropertyOptional({
-    type: String,
-    description: 'This is a required property',
+    description: 'The methodology of the project',
+    enum: ['AGILE', 'WATERFALL'],
   })
-  methodology?: string;
+  @Matches(RegExp(/^.*\b(AGILE|WATERFALL)\b.*$/))
+  methodology: 'AGILE' | 'WATERFALL';
 }
