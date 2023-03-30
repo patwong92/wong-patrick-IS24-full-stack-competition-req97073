@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import * as PRODUCTS from '../../products.json';
 import { InsertProductDTO } from './dtos/insertProduct.dto';
@@ -17,6 +18,21 @@ export class ProductsService {
     fs.writeFileSync(url, JSON.stringify(products, null, 2), 'utf8');
   }
 
+  getProduct(id: string): Product {
+    const product = PRODUCTS.find((product) => product.productId === id);
+
+    if (!product)
+      throw new NotFoundException(
+        `Unable to find product with productId ${id}`,
+      );
+
+    return product;
+  }
+
+  getProducts(): Product[] {
+    return PRODUCTS;
+  }
+
   deleteProduct(productId: string): boolean {
     try {
       PRODUCTS.filter((product) => product.productId !== productId);
@@ -27,10 +43,6 @@ export class ProductsService {
     }
 
     return true;
-  }
-
-  getProducts(): Product[] {
-    return PRODUCTS;
   }
 
   insertProduct(dto: InsertProductDTO) {

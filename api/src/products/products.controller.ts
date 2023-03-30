@@ -33,6 +33,19 @@ export class ProductsController {
 
   @ApiResponse({
     status: HttpStatus.CREATED,
+    description: 'Product has been found',
+  })
+  @ApiResponse({
+    status: HttpStatus.INTERNAL_SERVER_ERROR,
+    description: 'Unable to find the product with given productId input',
+  })
+  @Get(':id')
+  getProduct(@Param('id') id: string) {
+    return this.productsService.getProduct(id);
+  }
+
+  @ApiResponse({
+    status: HttpStatus.CREATED,
     description: 'The product has been successfully created.',
   })
   @ApiResponse({
