@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, concatMap, take } from 'rxjs';
 import { AppService } from '../../app.service';
 import { Router } from '@angular/router';
+import { AddProductForm } from 'src/app/types/add-product-form.type';
 
 @Injectable({
   providedIn: 'root',
@@ -57,7 +58,7 @@ export class AddProductService extends ProductFormService {
     } as AddProductForm;
   }
 
-  setProductFormGroup(product: Product, fb: FormBuilder): FormGroup {
+  setProductFormGroup(_product: Product, fb: FormBuilder): FormGroup {
     return fb.group({
       productName: ['', Validators.required],
       scrumMasterName: fb.group({
@@ -88,8 +89,7 @@ export class AddProductService extends ProductFormService {
   }
 
   submit(formGroup: FormGroup): void {
-    const body = this.createHttpBody(formGroup);
-    const productName = this.productService.currentProductName;
+    const body = this.createHttpBody(formGroup) as AddProductForm;
 
     this.productService
       .addProduct$(body)
@@ -103,8 +103,11 @@ export class AddProductService extends ProductFormService {
           throw new Error('Unable to update');
         })
       )
-      .subscribe(() => {
-        this.appService.notify(`${productName} has been successfully added`);
+      .subscribe((c) => {
+        console.log(c);
+        this.appService.notify(
+          `${body.productName} has been successfully added`
+        );
         this.router.navigate(['']);
       });
   }

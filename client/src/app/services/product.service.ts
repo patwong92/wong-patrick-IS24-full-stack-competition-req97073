@@ -69,6 +69,7 @@ export class ProductService {
           products.find((p: Product) => p.productId === id) as Product
       ),
       tap((product) => {
+        console.log(product);
         this.currentProductSubject.next(product);
       })
     ) as Observable<Product>;

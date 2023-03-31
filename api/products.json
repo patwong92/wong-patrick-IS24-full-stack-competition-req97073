@@ -81,7 +81,7 @@
   },
   {
     "productId": "349e79f9",
-    "productName": "LiftBuddy",
+    "productName": "New Horizons",
     "scrumMasterName": "Michael Moore",
     "productOwnerName": "Blanca Otis",
     "developers": [
@@ -101,5 +101,77 @@
     ],
     "startDate": "2025/03/02",
     "methodology": "WATERFALL"
+  },
+  {
+    "productId": "15984bf2",
+    "productName": "BC Housing App",
+    "scrumMasterName": "Jacob Mclaughlin",
+    "productOwnerName": "Hans Aman",
+    "developers": [
+      "Lebron James",
+      "Kyrie Irving",
+      "Kevin Durant"
+    ],
+    "startDate": "2025/02/15",
+    "methodology": "WATERFALL"
+  },
+  {
+    "productId": "074b3f15",
+    "productName": "BC Parks Revitalization",
+    "scrumMasterName": "David Flow",
+    "productOwnerName": "Simu Liu",
+    "developers": [
+      "Shang Chi",
+      "Peter Parker"
+    ],
+    "startDate": "2023/07/04",
+    "methodology": "AGILE"
+  },
+  {
+    "productId": "8a2066b9",
+    "productName": "BC Museum Dashboard",
+    "scrumMasterName": "JT Muller",
+    "productOwnerName": "JT Miller",
+    "developers": [
+      "Jimothy Timothy",
+      "Gwen Hughes"
+    ],
+    "startDate": "2024/06/14",
+    "methodology": "AGILE"
+  },
+  {
+    "productId": "a6233f93",
+    "productName": "Animal Crossing Dashboard",
+    "scrumMasterName": "Ace Davidson",
+    "productOwnerName": "Pete Davidson",
+    "developers": [
+      "Bran Oates"
+    ],
+    "startDate": "2022/01/30",
+    "methodology": "AGILE"
+  },
+  {
+    "productId": "3b26fdaa",
+    "productName": "Education Assistance App",
+    "scrumMasterName": "Vivian Silver",
+    "productOwnerName": "Jean Gold",
+    "developers": [
+      "Branson Diamond",
+      "Ali Platinum",
+      "Doris Challenger"
+    ],
+    "startDate": "2026/05/18",
+    "methodology": "WATERFALL"
+  },
+  {
+    "productId": "9b131301",
+    "productName": "Innovation App",
+    "scrumMasterName": "Rehan Guiterrez",
+    "productOwnerName": "Randy Marsh",
+    "developers": [
+      "Homer Simpson"
+    ],
+    "startDate": "2025/01/20",
+    "methodology": "AGILE"
   }
 ]
