@@ -60,11 +60,14 @@ export class EditProductService extends ProductFormService {
     const isIdenticalScrumMasterName =
       a?.scrumMasterName?.firstName === b?.scrumMasterName?.firstName &&
       a?.scrumMasterName?.lastName === b?.scrumMasterName?.lastName;
-    const isIdenticalDeveloper = a?.developers?.every((ad) =>
-      b?.developers.some(
-        (bd) => ad?.firstName === bd?.firstName && ad?.lastName === bd?.lastName
-      )
-    );
+    const isIdenticalDeveloper =
+      a.developers.length === b.developers.length &&
+      a?.developers?.every((ad) =>
+        b?.developers.some(
+          (bd) =>
+            ad?.firstName === bd?.firstName && ad?.lastName === bd?.lastName
+        )
+      );
     const isIdenticalProductOwnerName =
       a?.productOwnerName?.firstName === b?.productOwnerName?.firstName &&
       a?.productOwnerName?.lastName === b?.productOwnerName?.lastName;
@@ -112,8 +115,7 @@ export class EditProductService extends ProductFormService {
   }
 
   submit(formGroup: FormGroup): void {
-    const body = this.createHttpBody(formGroup);
-    const productName = this.productService.currentProductName;
+    const body = this.createHttpBody(formGroup) as EditProductForm;
 
     this.productService.currentProduct$
       .pipe(
@@ -128,7 +130,9 @@ export class EditProductService extends ProductFormService {
         })
       )
       .subscribe(() => {
-        this.appService.notify(`${productName} has been successfully updated`);
+        this.appService.notify(
+          `${body.productName} has been successfully updated`
+        );
         this.router.navigate(['']);
       });
   }

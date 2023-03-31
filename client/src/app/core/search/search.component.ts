@@ -32,7 +32,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     // Function that affects the autocomplete search results
     this.subscription.add(
       this.searchControl.controls['option'].valueChanges.subscribe((option) => {
-        console.log(option);
         this.displayedOptions$ = this.productService.products$.pipe(
           map((products) => {
             if (option === 'developer')

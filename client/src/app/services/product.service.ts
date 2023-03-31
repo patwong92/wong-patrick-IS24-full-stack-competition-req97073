@@ -44,10 +44,6 @@ export class ProductService {
     return this.currentProductSubject.asObservable() as Observable<Product>;
   }
 
-  get currentProductName(): string {
-    return this.currentProductSubject.value?.productName as string;
-  }
-
   addProduct$(body: any): Observable<{ productId: string }> {
     return this.http.post<{ productId: string }>(
       `${environment.baseApiUrl}/api/products`,
@@ -69,7 +65,6 @@ export class ProductService {
           products.find((p: Product) => p.productId === id) as Product
       ),
       tap((product) => {
-        console.log(product);
         this.currentProductSubject.next(product);
       })
     ) as Observable<Product>;

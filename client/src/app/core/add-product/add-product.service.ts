@@ -104,7 +104,6 @@ export class AddProductService extends ProductFormService {
         })
       )
       .subscribe((c) => {
-        console.log(c);
         this.appService.notify(
           `${body.productName} has been successfully added`
         );
