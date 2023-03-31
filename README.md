@@ -27,21 +27,18 @@ The url of the application is http://localhost:4200. This will be available once
 
 -   `/`
     
-    <img width="1506" alt="Screen Shot 2023-03-30 at 7 06 43 PM" src="https://user-images.githubusercontent.com/43553331/229004592-c9cae909-2a8b-4c72-8e1e-84904e224573.png">
-    
+    <img width="1506" alt="Screen Shot 2023-03-31 at 1 24 39 AM" src="https://user-images.githubusercontent.com/43553331/229067280-b071810b-efd3-4736-9d04-8f9501e67f20.png">
     -   Homepage of the application. It shows all products fetched from the microservice and contains a search bar to find specific developers or scrum masters
 -   `/add-product`
 
-    <img width="1506" alt="Screen Shot 2023-03-30 at 6 43 55 PM" src="https://user-images.githubusercontent.com/43553331/229004260-8af1a0b2-3cbf-4199-a288-02b9af4437f6.png">
-
+    <img width="1506" alt="Screen Shot 2023-03-31 at 1 25 14 AM" src="https://user-images.githubusercontent.com/43553331/229067363-a331d9d5-3783-4ddc-a53c-316bb3c4030f.png">
     -   A form to fill out to add a product to the product catalog
 -   `/edit-product/:id`
 
-    <img width="1506" alt="Screen Shot 2023-03-30 at 6 44 03 PM" src="https://user-images.githubusercontent.com/43553331/229004291-48ee01f9-6dd1-4eab-a9e5-7341efd19839.png">
-
-    -   A form to edit specific fields of a product
-    -   This route is only available if the users clicks on the edit icon of the product from the product list on the homepage.
-    -   Refreshing this route will be redirected to the home page.
+    <img width="1506" alt="Screen Shot 2023-03-31 at 1 25 23 AM" src="https://user-images.githubusercontent.com/43553331/229067444-711bb466-9db0-4e53-b83e-b1f1dcfe4a0a.png">
+    -   A form to edit specific fields of a product<br>
+    -   This route is only available if the users clicks on the edit icon of the product from the product list on the homepage<br>
+    -   Refreshing this route will be redirected to the home page
 
 ## API Routes
 
