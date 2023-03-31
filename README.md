@@ -13,11 +13,19 @@ This application displays all products from the Information Ministry Branch (IMB
 [Docker Compose](https://docs.docker.com/compose/) used to run the the IMB Product Catalog application.
 
 1.  To confirm if you have docker compose installed in your terminal, run `docker-compose -v`. You should be able to see its version number. If that is not the case, please install [Docker](https://www.docker.com/), which includes Docker Compose.
-2.  On the directory that contains the docker-compose.yml file, type the command `docker-compose build --pull`
-3.  This will build the containers for the server and the client. Once built, you do not need to run the build command anymore.
-4.  Type `docker-compose up -d` to start the server and client containers
+2.  Download the repository and navigate to the directory that contains the `docker-compose.yml` file.
+3.  Type the command `docker-compose build --pull`. This will build the containers for the server and the client, which takes up to 3 minutes.
+4.  Type `docker-compose up -d` to start the server and client containers.
 5.  To stop the application, type `docker-compose stop`
 6.  If you want to stop and remove the client and server containers, run `docker-compose down`
+
+# Alternate Procedure without Docker
+
+1.  Download the repository.
+2.  On the `client` directory, type `npm install`
+3.  Navigate to the `api` directory, and type `npm install`
+4.  Navigate to the base directory, and type `npm install`
+5.  Type `npm run start` on the base directory to run the application.
 
 # Routes
 
