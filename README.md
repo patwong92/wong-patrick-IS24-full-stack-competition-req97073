@@ -10,6 +10,8 @@ This application displays all products from the Information Ministry Branch (IMB
 
 # Instructions
 
+## With Docker
+
 [Docker Compose](https://docs.docker.com/compose/) used to run the the IMB Product Catalog application.
 
 1.  To confirm if you have docker compose installed in your terminal, run `docker-compose -v`. You should be able to see its version number. If that is not the case, please install [Docker](https://www.docker.com/), which includes Docker Compose.
@@ -19,7 +21,7 @@ This application displays all products from the Information Ministry Branch (IMB
 5.  To stop the application, type `docker-compose stop`
 6.  If you want to stop and remove the client and server containers, run `docker-compose down`
 
-# Alternate Procedure without Docker
+## Without Docker
 
 1.  Download the repository.
 2.  On the `client` directory, type `npm install`
