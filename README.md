@@ -2,7 +2,7 @@
 
 # General Information
 
-This application displays all products from the Information Ministry Branch (IMB) product catalog. The user can add new products and update existing products. The user use the search bar to filter the products by either a developer name or a scrum master name.
+This application displays all products from the Information Ministry Branch (IMB) product catalog. The user can add new products and update existing products. The user can use the search bar to filter products by either developer name or scrum master name.
 
 # Tech Stack
 
@@ -14,7 +14,7 @@ This application displays all products from the Information Ministry Branch (IMB
 
 1.  To confirm if you have docker compose installed in your terminal, run `docker-compose -v`. You should be able to see its version number. If that is not the case, please install [Docker](https://www.docker.com/), which includes Docker Compose.
 2.  On the directory that contains the docker-compose.yml file, type the command `docker-compose build --pull`
-3.  This will build the images for the server and the client. Once built, you do not need to run the build command anymore.
+3.  This will build the containers for the server and the client. Once built, you do not need to run the build command anymore.
 4.  Type `docker-compose up -d` to start the server and client containers
 5.  To stop the application, type `docker-compose stop`
 6.  If you want to stop and remove the client and server containers, run `docker-compose down`
@@ -23,7 +23,7 @@ This application displays all products from the Information Ministry Branch (IMB
 
 ## Client Webpage Routes
 
-The url of the application is http://localhost:4200. This will be available once the Docker Compose has been started.
+The url of the application is http://localhost:4200. This will be available once the client and api containers have been started.
 
 -   `/`
     -   Homepage of the application. It shows all products fetched from the microservice and contains a search bar to find specific developers or scrum masters
