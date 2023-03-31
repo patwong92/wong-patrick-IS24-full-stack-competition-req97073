@@ -10,9 +10,9 @@ This application displays all products from the Information Ministry Branch (IMB
 
 # Instructions
 
-Docker is used to run the the IMB Product Catalog application.
+[Docker Compose](https://docs.docker.com/compose/) used to run the the IMB Product Catalog application.
 
-1.  To confirm if you have docker installed in your terminal, run `docker -v`
+1.  To confirm if you have docker compose installed in your terminal, run `docker-compose -v`. You should be able to see its version number. If that is not the case, please install [Docker](https://www.docker.com/), which includes Docker Compose.
 2.  On the directory that contains the docker-compose.yml file, type the command `docker-compose build --pull`
 3.  This will build the images for the server and the client. Once built, you do not need to run the build command anymore.
 4.  Type `docker-compose up -d` to start the server and client containers
@@ -23,15 +23,15 @@ Docker is used to run the the IMB Product Catalog application.
 
 ## Client Webpage Routes
 
-The url of the application is http://localhost:4200. This will be available once the docker compose instance is activated. See instructions on how to do that.
+The url of the application is http://localhost:4200. This will be available once the Docker Compose has been started.
 
 -   `/`
-    -   Homepage of the application. It shows all the products and contains a search bar to find specific developers or scrum masters
+    -   Homepage of the application. It shows all products fetched from the microservice and contains a search bar to find specific developers or scrum masters
 -   `/add-product`
     -   A form to fill out to add a product to the product catalog
 -   `/edit-product/:id`
     -   A form to edit specific fields of a product
-    -   This route is only available if the users clicks on the edit icon of the product from the product list in the / path
+    -   This route is only available if the users clicks on the edit icon of the product from the product list in the / path. Refreshing this route will be redirected to the home page.
 
 ## API Routes
 
@@ -46,7 +46,7 @@ The base url of the microservice is `http://localhost:3000/api`
     -   The webpage includes details about request and response types of each resource.
 -   `POST` `/products`
     -   Inserts a product to the data store
--   `PUT` `/product/:ids`
+-   `PUT` `/product/:id`
     -   Updates the product with productId of `:id` to the data store
--   `DELETE` `/product/:ids`
+-   `DELETE` `/product/:id`
     -   Deletes the product with productId of `:id` from the data store
